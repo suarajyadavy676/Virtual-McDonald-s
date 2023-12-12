@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Food Order Online</title>
+  <link rel="stylesheet" href="restaurant.css">
+</head>
+<body>
+  <div id="restaurant">
+    <h1>Food Ordering System</h1>
+    <div id="fooditems">
+      <label>Burger
+        <input type="checkbox" value="0" id="br">
+      </label>
+      <label>Samosa
+        <input type="checkbox" value="1" id="sm">
+      </label>
+      <label>Jalebi
+        <input type="checkbox" value="2" id="jl"> 
+      </label>
+    </div>
+    <button onclick="order()" type="button" class="btn btn-outline-success">Order Now</button>
+    <h2 id="make"></h2>
+    <div class="spinner-border" id="circle"></div>
+    <h3 id="id"></h3>
+    <img src="" alt="" id="foodimage">
+  </div>
+  
+  <script>
+    let foodItems =document.querySelectorAll('fooditems')
+    let burger = document.getElementById("br")
+    let samosa = document.getElementById("sm")
+    let jalebi = document.getElementById("jl")
+    let status = document.getElementById("make")
+    let foodImage = document.getElementById("foodimage")
+    let images = ["burger.jpg","samosa.jpg","jalebi.jpg"]
+    let id = document.getElementById("id")
+
+    let animation = document.getElementById("circle")
+    animation.style.visibility = "hidden"
+
+    function order(){
+      id.innerText = ""
+      foodImage.setAttribute("src","")
+      if(sm.checked == false && br.checked == false && jl.checked == false){
+        alert ("please enter one food at a time")
+        return
+      }
+      status.innerText = "Your foood are making please wait few second"
+      status.style.display = "block"
+      animation.style.visibility = "visible"
+      let promise = new Promise(function(resolve){
+        setTimeout(function(){
+          resolve()
+        },2000)
+      })
+      promise.then(function(){
+          animation.style.visibility = "hidden"
+          status.innerText = "Your Order is Ready ..."
+          if(br.checked == true){
+            foodImage.setAttribute("src",images[0] )
+            id.innerText = `id : ${Math.floor(Math.random()*2000 + 3000)}`
+            id.style.float = "right"
+            status.innerText = "Your food is ready ..."
+          }
+           else if(sm.checked == true){
+            foodImage.setAttribute("src",images[1] )
+            id.innerText = `id : ${Math.floor(Math.random()*2000 + 3000)}`
+            id.style.float = "right"
+            status.innerText = "Your food is ready ..."
+          }
+           else if(jl.checked == true){
+            foodImage.setAttribute("src",images[2] )
+            id.innerText = `id : ${Math.floor(Math.random()*2000 + 3000)}`
+            id.style.float = "right"
+            status.innerText = "Your food is ready ..."
+          }
+
+      })
+
+    }
+
+  </script>
+</body>
+</html>
