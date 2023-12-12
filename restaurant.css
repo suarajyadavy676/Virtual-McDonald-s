@@ -2,7 +2,7 @@ body{
   background-image: url("restaurant-interior_1127-3394.avif"); background-repeat:no-repeat ; background-size:cover;
 }
 #restaurant{
-  width: 50%; margin: 20vh auto; text-align:  center; background-color: rgb(198, 214, 228); border-radius: 15px;min-height: 500px; opacity: 0.8;
+  width: 50%; margin: 20vh auto; text-align:  center; background-color: rgb(198, 214, 228); border-radius: 15px;min-height: 500px;
 }
 button{
   margin: 30px;
